@@ -6,5 +6,5 @@ support for reading multiple response sets (MRSets) from SAV files, which we are
 Until this work can be upstreamed into readstat and pyreadstat proper, we are maintaining this modified version under
 a suffix tagging scheme.
 
-The latest version of pyreadstat is currently `1.2.7`. The current version of this fork is `1.2.7.1`.
+The latest version of pyreadstat is currently `1.2.7`. The current version of this fork is `1.2.7.2`.
 

@@ -1,5 +1,5 @@
 
-#line 1 "readstat_sav_parse_mr_name.rl"
+#line 1 "src/spss/readstat_sav_parse_mr_name.rl"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,69 +7,71 @@
 #include "../readstat_malloc.h"
 
 
-#line 11 "readstat_sav_parse_mr_name.c"
+#line 11 "src/spss/readstat_sav_parse_mr_name.c"
 static const char _mr_extractor_actions[] = {
 	0, 1, 0, 1, 1, 1, 2, 1, 
-	3, 1, 4
+	3, 1, 4, 2, 2, 4, 2, 3, 
+	4
 };
 
 static const char _mr_extractor_key_offsets[] = {
-	0, 0, 8, 17, 19, 22, 24, 27, 
-	37, 49, 58
+	0, 0, 1, 4, 8, 11, 15, 17, 
+	22, 29, 36, 43, 50
 };
 
 static const char _mr_extractor_trans_keys[] = {
-	46, 95, 48, 57, 65, 90, 97, 122, 
-	46, 61, 95, 48, 57, 65, 90, 97, 
-	122, 67, 68, 32, 48, 57, 48, 57, 
-	32, 48, 57, 0, 32, 46, 95, 48, 
-	57, 65, 90, 97, 122, 0, 32, 46, 
-	95, 9, 13, 48, 57, 65, 90, 97, 
-	122, 0, 46, 95, 48, 57, 65, 90, 
-	97, 122, 0
+	61, 61, 67, 68, 32, 61, 48, 57, 
+	61, 48, 57, 32, 61, 48, 57, 0, 
+	61, 0, 32, 61, 9, 13, 0, 32, 
+	61, 9, 13, 67, 68, 0, 32, 61, 
+	9, 13, 48, 57, 0, 32, 61, 9, 
+	13, 48, 57, 0, 32, 61, 9, 13, 
+	48, 57, 0, 32, 61, 9, 13, 0
 };
 
 static const char _mr_extractor_single_lengths[] = {
-	0, 2, 3, 0, 1, 0, 1, 4, 
-	4, 3, 0
+	0, 1, 1, 2, 1, 2, 2, 3, 
+	3, 3, 3, 3, 3
 };
 
 static const char _mr_extractor_range_lengths[] = {
-	0, 3, 3, 1, 1, 1, 1, 3, 
-	4, 3, 0
+	0, 0, 1, 1, 1, 1, 0, 1, 
+	2, 2, 2, 2, 1
 };
 
 static const char _mr_extractor_index_offsets[] = {
-	0, 0, 6, 13, 15, 18, 20, 23, 
-	31, 40, 47
+	0, 1, 3, 6, 10, 13, 17, 20, 
+	25, 31, 37, 43, 49
 };
 
 static const char _mr_extractor_indicies[] = {
-	0, 0, 0, 0, 0, 1, 0, 2, 
-	0, 0, 0, 0, 1, 3, 1, 4, 
-	5, 1, 6, 1, 7, 6, 1, 8, 
-	9, 10, 10, 10, 10, 10, 1, 11, 
-	12, 10, 10, 12, 10, 10, 10, 1, 
-	8, 10, 10, 10, 10, 10, 1, 1, 
-	0
+	0, 1, 0, 1, 2, 0, 3, 1, 
+	4, 0, 1, 5, 0, 6, 1, 5, 
+	0, 8, 9, 7, 10, 11, 9, 11, 
+	7, 10, 11, 9, 11, 12, 7, 10, 
+	13, 9, 11, 14, 7, 10, 11, 9, 
+	11, 15, 7, 10, 16, 9, 11, 15, 
+	7, 10, 11, 9, 11, 7, 0
 };
 
 static const char _mr_extractor_trans_targs[] = {
-	2, 0, 3, 4, 5, 4, 6, 7, 
-	10, 7, 8, 10, 9
+	1, 2, 3, 4, 3, 5, 6, 7, 
+	12, 8, 12, 7, 9, 10, 9, 11, 
+	7
 };
 
 static const char _mr_extractor_trans_actions[] = {
-	0, 0, 1, 3, 5, 0, 0, 7, 
-	0, 0, 0, 9, 9
+	0, 1, 3, 5, 0, 0, 7, 0, 
+	0, 1, 9, 9, 3, 11, 0, 0, 
+	14
 };
 
-static const int mr_extractor_start = 1;
+static const int mr_extractor_start = 0;
 
-static const int mr_extractor_en_main = 1;
+static const int mr_extractor_en_main = 0;
 
 
-#line 75 "readstat_sav_parse_mr_name.rl"
+#line 75 "src/spss/readstat_sav_parse_mr_name.rl"
 
 
 readstat_error_t extract_mr_data(const char *line, mr_set_t *result) {
@@ -91,14 +93,14 @@ readstat_error_t extract_mr_data(const char *line, mr_set_t *result) {
 
     // Execute Ragel finite state machine (FSM)
     
-#line 95 "readstat_sav_parse_mr_name.c"
+#line 97 "src/spss/readstat_sav_parse_mr_name.c"
 	{
 	cs = mr_extractor_start;
 	}
 
-#line 96 "readstat_sav_parse_mr_name.rl"
+#line 96 "src/spss/readstat_sav_parse_mr_name.rl"
     
-#line 102 "readstat_sav_parse_mr_name.c"
+#line 104 "src/spss/readstat_sav_parse_mr_name.c"
 	{
 	int _klen;
 	unsigned int _trans;
@@ -108,8 +110,6 @@ readstat_error_t extract_mr_data(const char *line, mr_set_t *result) {
 
 	if ( p == pe )
 		goto _test_eof;
-	if ( cs == 0 )
-		goto _out;
 _resume:
 	_keys = _mr_extractor_trans_keys + _mr_extractor_key_offsets[cs];
 	_trans = _mr_extractor_index_offsets[cs];
@@ -173,7 +173,7 @@ _match:
 		switch ( *_acts++ )
 		{
 	case 0:
-#line 10 "readstat_sav_parse_mr_name.rl"
+#line 10 "src/spss/readstat_sav_parse_mr_name.rl"
 	{
         mr_name = (char *)malloc(p - start + 1);
         memcpy(mr_name, start, p - start);
@@ -181,14 +181,14 @@ _match:
     }
 	break;
 	case 1:
-#line 16 "readstat_sav_parse_mr_name.rl"
+#line 16 "src/spss/readstat_sav_parse_mr_name.rl"
 	{
         mr_type = *p;
         start = p + 1;
     }
 	break;
 	case 2:
-#line 21 "readstat_sav_parse_mr_name.rl"
+#line 21 "src/spss/readstat_sav_parse_mr_name.rl"
 	{
         int n_cv_digs = p - start;
         char *n_dig_str = (char *)malloc(n_cv_digs + 1);
@@ -209,7 +209,7 @@ _match:
     }
 	break;
 	case 3:
-#line 40 "readstat_sav_parse_mr_name.rl"
+#line 40 "src/spss/readstat_sav_parse_mr_name.rl"
 	{
         char *lbl_len_str = (char *)malloc(p - start + 1);
         memcpy(lbl_len_str, start, p - start);
@@ -223,7 +223,7 @@ _match:
     }
 	break;
 	case 4:
-#line 52 "readstat_sav_parse_mr_name.rl"
+#line 52 "src/spss/readstat_sav_parse_mr_name.rl"
 	{
         int len = p - start;
         char *subvar = (char *)malloc(len + 1);
@@ -235,23 +235,20 @@ _match:
         mr_subvariables[mr_subvar_count++] = subvar;
     }
 	break;
-#line 239 "readstat_sav_parse_mr_name.c"
+#line 239 "src/spss/readstat_sav_parse_mr_name.c"
 		}
 	}
 
 _again:
-	if ( cs == 0 )
-		goto _out;
 	if ( ++p != pe )
 		goto _resume;
 	_test_eof: {}
-	_out: {}
 	}
 
-#line 97 "readstat_sav_parse_mr_name.rl"
+#line 97 "src/spss/readstat_sav_parse_mr_name.rl"
 
     // Check if FSM finished successfully
-    if (cs < 10 || p != pe) {
+    if (cs < 12 || p != pe) {
         retval = READSTAT_ERROR_BAD_MR_STRING;
         goto cleanup;
     }
@@ -290,7 +287,7 @@ readstat_error_t parse_mr_line(const char *line, mr_set_t *result) {
 }
 
 
-#line 294 "readstat_sav_parse_mr_name.c"
+#line 291 "src/spss/readstat_sav_parse_mr_name.c"
 static const char _mr_parser_actions[] = {
 	0, 1, 0
 };
@@ -333,7 +330,7 @@ static const int mr_parser_start = 1;
 static const int mr_parser_en_main = 1;
 
 
-#line 160 "readstat_sav_parse_mr_name.rl"
+#line 160 "src/spss/readstat_sav_parse_mr_name.rl"
 
 
 readstat_error_t parse_mr_string(const char *line, mr_set_t **mr_sets, size_t *n_mr_lines) {
@@ -346,14 +343,14 @@ readstat_error_t parse_mr_string(const char *line, mr_set_t **mr_sets, size_t *n
     *n_mr_lines = 0;
 
     
-#line 350 "readstat_sav_parse_mr_name.c"
+#line 347 "src/spss/readstat_sav_parse_mr_name.c"
 	{
 	cs = mr_parser_start;
 	}
 
-#line 172 "readstat_sav_parse_mr_name.rl"
+#line 172 "src/spss/readstat_sav_parse_mr_name.rl"
     
-#line 357 "readstat_sav_parse_mr_name.c"
+#line 354 "src/spss/readstat_sav_parse_mr_name.c"
 	{
 	int _klen;
 	unsigned int _trans;
@@ -428,7 +425,7 @@ _match:
 		switch ( *_acts++ )
 		{
 	case 0:
-#line 140 "readstat_sav_parse_mr_name.rl"
+#line 140 "src/spss/readstat_sav_parse_mr_name.rl"
 	{
         char *mln = (char *)malloc(p - start);
         memcpy(mln, start + 1, p - start);
@@ -443,7 +440,7 @@ _match:
         start = p + 1;
     }
 	break;
-#line 447 "readstat_sav_parse_mr_name.c"
+#line 444 "src/spss/readstat_sav_parse_mr_name.c"
 		}
 	}
 
@@ -456,7 +453,7 @@ _again:
 	_out: {}
 	}
 
-#line 173 "readstat_sav_parse_mr_name.rl"
+#line 173 "src/spss/readstat_sav_parse_mr_name.rl"
 
     if (cs < 4 || p != pe) {
         retval = READSTAT_ERROR_BAD_MR_STRING;

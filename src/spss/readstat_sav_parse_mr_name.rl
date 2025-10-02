@@ -98,10 +98,10 @@
     counted_value = digit* ' ' > extract_counted_value;
     label = digit+ ' '+ > extract_label;
 
-    end = (space | '\0'); # subvar token terminator
-    subvariable = (nc+ end >extract_subvar);
+    subvar_space = (nc+ space >extract_subvar);
+    subvar_end = (nc+ '\0' >extract_subvar);
 
-    main := name type counted_value label subvariable+;
+    main := name type counted_value label subvar_space* (subvar_end | '\0');
 
     write data nofinal noerror;
 }%%

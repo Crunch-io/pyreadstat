@@ -168,6 +168,42 @@ static readstat_error_t sav_read_multiple_response_sets(size_t data_len, sav_ctx
     }
 
     retval = parse_mr_string(mr_string, &ctx->mr_sets, &ctx->multiple_response_sets_length);
+    if (retval != READSTAT_OK) {
+        goto cleanup;
+    }
+
+    int i;
+    for (i = 0; i < ctx->multiple_response_sets_length; i++) {
+        size_t name_len = strlen(ctx->mr_sets[i].name);
+        size_t utf8_name_len = (4 * name_len) + 1;
+        char *utf8_name = readstat_malloc(utf8_name_len);
+        if (utf8_name == NULL) {
+            retval = READSTAT_ERROR_MALLOC;
+            goto cleanup;
+        }
+        retval = readstat_convert(utf8_name, utf8_name_len, ctx->mr_sets[i].name, name_len, ctx->converter);
+        if (retval != READSTAT_OK) {
+            free(utf8_name);
+            goto cleanup;
+        }
+        free(ctx->mr_sets[i].name);
+        ctx->mr_sets[i].name = utf8_name;
+
+        size_t label_len = strlen(ctx->mr_sets[i].label);
+        size_t utf8_label_len = (4 * label_len) + 1;
+        char *utf8_label = readstat_malloc(utf8_label_len);
+        if (utf8_label == NULL) {
+            retval = READSTAT_ERROR_MALLOC;
+            goto cleanup;
+        }
+        retval = readstat_convert(utf8_label, utf8_label_len, ctx->mr_sets[i].label, label_len, ctx->converter);
+        if (retval != READSTAT_OK) {
+            free(utf8_label);
+            goto cleanup;
+        }
+        free(ctx->mr_sets[i].label);
+        ctx->mr_sets[i].label = utf8_label;
+    }
 
 cleanup:
     free(mr_string);

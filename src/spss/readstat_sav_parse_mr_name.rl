@@ -94,14 +94,29 @@
 
     nc = (extend | '_' | '.' ); # name character (including dots)
     name = nc+ '=' > extract_mr_name;
-    type = ('C' | 'D'){1} > extract_mr_type;
+
+    # Define types
+    c_type = 'C' > extract_mr_type;
+    d_type = 'D' > extract_mr_type;
+    e_type = 'E' > extract_mr_type;
+
+    # For type E, we need an optional pattern for the additional parameters
+    e_params = ' ' ('1' | '11') ' ';
+
     counted_value = digit* ' ' > extract_counted_value;
     label = digit+ ' '+ > extract_label;
 
     subvar_space = (nc+ space >extract_subvar);
     subvar_end = (nc+ '\0' >extract_subvar);
+    subvariables = subvar_space* (subvar_end | '\0');
 
-    main := name type counted_value label subvar_space* (subvar_end | '\0');
+    # Define patterns for each type
+    c_pattern = c_type counted_value label subvariables;
+    d_pattern = d_type counted_value label subvariables;
+    e_pattern = e_type e_params counted_value label subvariables;
+
+    # Main pattern is one of the type patterns
+    main := name (c_pattern | d_pattern | e_pattern);
 
     write data nofinal noerror;
 }%%
@@ -142,7 +157,7 @@ readstat_error_t extract_mr_data(const char *line, mr_set_t *result) {
     result->counted_value = mr_counted_value;
     result->subvariables = mr_subvariables;
     result->num_subvars = mr_subvar_count;
-    if (result->type == 'D') {
+    if (result->type == 'D' || result->type == 'E') {
         result->is_dichotomy = 1;
     }
 

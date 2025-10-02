@@ -11,59 +11,169 @@
 static const char _mr_extractor_actions[] = {
 	0, 1, 0, 1, 1, 1, 2, 1, 
 	3, 1, 4, 2, 2, 4, 2, 3, 
-	4
+	4, 2, 4, 2, 2, 4, 3
 };
 
-static const char _mr_extractor_key_offsets[] = {
-	0, 0, 1, 4, 8, 11, 15, 17, 
-	22, 29, 36, 43, 50
+static const short _mr_extractor_key_offsets[] = {
+	0, 0, 1, 5, 9, 12, 16, 18, 
+	23, 31, 38, 45, 52, 59, 66, 73, 
+	78, 84, 90, 95, 99, 102, 106, 108, 
+	113, 121, 128, 135, 142, 149, 156, 163, 
+	168, 174, 180, 187, 194, 201, 206, 208, 
+	210, 213, 217, 220, 224, 226, 231, 239, 
+	246, 253, 260, 267, 274, 281, 286, 292, 
+	298, 305, 312, 319, 324, 326, 331, 336
 };
 
 static const char _mr_extractor_trans_keys[] = {
-	61, 61, 67, 68, 32, 61, 48, 57, 
-	61, 48, 57, 32, 61, 48, 57, 0, 
-	61, 0, 32, 61, 9, 13, 0, 32, 
-	61, 9, 13, 67, 68, 0, 32, 61, 
+	61, 61, 67, 68, 69, 32, 61, 48, 
+	57, 61, 48, 57, 32, 61, 48, 57, 
+	0, 61, 0, 32, 61, 9, 13, 0, 
+	32, 61, 67, 68, 69, 9, 13, 0, 
+	32, 61, 9, 13, 48, 57, 0, 32, 
+	61, 9, 13, 48, 57, 0, 32, 61, 
 	9, 13, 48, 57, 0, 32, 61, 9, 
 	13, 48, 57, 0, 32, 61, 9, 13, 
-	48, 57, 0, 32, 61, 9, 13, 0
+	48, 57, 0, 32, 61, 9, 13, 48, 
+	57, 0, 32, 61, 9, 13, 0, 32, 
+	49, 61, 9, 13, 0, 32, 49, 61, 
+	9, 13, 0, 32, 61, 9, 13, 32, 
+	61, 48, 57, 61, 48, 57, 32, 61, 
+	48, 57, 0, 61, 0, 32, 61, 9, 
+	13, 0, 32, 61, 67, 68, 69, 9, 
+	13, 0, 32, 61, 9, 13, 48, 57, 
+	0, 32, 61, 9, 13, 48, 57, 0, 
+	32, 61, 9, 13, 48, 57, 0, 32, 
+	61, 9, 13, 48, 57, 0, 32, 61, 
+	9, 13, 48, 57, 0, 32, 61, 9, 
+	13, 48, 57, 0, 32, 61, 9, 13, 
+	0, 32, 49, 61, 9, 13, 0, 32, 
+	49, 61, 9, 13, 0, 32, 61, 9, 
+	13, 48, 57, 0, 32, 61, 9, 13, 
+	48, 57, 0, 32, 61, 9, 13, 48, 
+	57, 0, 32, 61, 9, 13, 32, 61, 
+	49, 61, 32, 49, 61, 32, 61, 48, 
+	57, 61, 48, 57, 32, 61, 48, 57, 
+	0, 61, 0, 32, 61, 9, 13, 0, 
+	32, 61, 67, 68, 69, 9, 13, 0, 
+	32, 61, 9, 13, 48, 57, 0, 32, 
+	61, 9, 13, 48, 57, 0, 32, 61, 
+	9, 13, 48, 57, 0, 32, 61, 9, 
+	13, 48, 57, 0, 32, 61, 9, 13, 
+	48, 57, 0, 32, 61, 9, 13, 48, 
+	57, 0, 32, 61, 9, 13, 0, 32, 
+	49, 61, 9, 13, 0, 32, 49, 61, 
+	9, 13, 0, 32, 61, 9, 13, 48, 
+	57, 0, 32, 61, 9, 13, 48, 57, 
+	0, 32, 61, 9, 13, 48, 57, 0, 
+	32, 61, 9, 13, 32, 61, 0, 32, 
+	61, 9, 13, 0, 32, 61, 9, 13, 
+	0, 32, 61, 9, 13, 0
 };
 
 static const char _mr_extractor_single_lengths[] = {
-	0, 1, 1, 2, 1, 2, 2, 3, 
-	3, 3, 3, 3, 3
+	0, 1, 4, 2, 1, 2, 2, 3, 
+	6, 3, 3, 3, 3, 3, 3, 3, 
+	4, 4, 3, 2, 1, 2, 2, 3, 
+	6, 3, 3, 3, 3, 3, 3, 3, 
+	4, 4, 3, 3, 3, 3, 2, 2, 
+	3, 2, 1, 2, 2, 3, 6, 3, 
+	3, 3, 3, 3, 3, 3, 4, 4, 
+	3, 3, 3, 3, 2, 3, 3, 3
 };
 
 static const char _mr_extractor_range_lengths[] = {
-	0, 0, 1, 1, 1, 1, 0, 1, 
-	2, 2, 2, 2, 1
+	0, 0, 0, 1, 1, 1, 0, 1, 
+	1, 2, 2, 2, 2, 2, 2, 1, 
+	1, 1, 1, 1, 1, 1, 0, 1, 
+	1, 2, 2, 2, 2, 2, 2, 1, 
+	1, 1, 2, 2, 2, 1, 0, 0, 
+	0, 1, 1, 1, 0, 1, 1, 2, 
+	2, 2, 2, 2, 2, 1, 1, 1, 
+	2, 2, 2, 1, 0, 1, 1, 1
 };
 
-static const char _mr_extractor_index_offsets[] = {
-	0, 1, 3, 6, 10, 13, 17, 20, 
-	25, 31, 37, 43, 49
+static const short _mr_extractor_index_offsets[] = {
+	0, 1, 3, 8, 12, 15, 19, 22, 
+	27, 35, 41, 47, 53, 59, 65, 71, 
+	76, 82, 88, 93, 97, 100, 104, 107, 
+	112, 120, 126, 132, 138, 144, 150, 156, 
+	161, 167, 173, 179, 185, 191, 196, 199, 
+	202, 206, 210, 213, 217, 220, 225, 233, 
+	239, 245, 251, 257, 263, 269, 274, 280, 
+	286, 292, 298, 304, 309, 312, 317, 322
 };
 
 static const char _mr_extractor_indicies[] = {
-	0, 1, 0, 1, 2, 0, 3, 1, 
-	4, 0, 1, 5, 0, 6, 1, 5, 
-	0, 8, 9, 7, 10, 11, 9, 11, 
-	7, 10, 11, 9, 11, 12, 7, 10, 
-	13, 9, 11, 14, 7, 10, 11, 9, 
-	11, 15, 7, 10, 16, 9, 11, 15, 
-	7, 10, 11, 9, 11, 7, 0
+	0, 1, 0, 1, 2, 3, 4, 0, 
+	5, 1, 6, 0, 1, 7, 0, 8, 
+	1, 7, 0, 10, 11, 9, 12, 13, 
+	11, 13, 9, 12, 13, 11, 14, 15, 
+	16, 13, 9, 12, 17, 11, 13, 18, 
+	9, 12, 13, 11, 13, 19, 9, 12, 
+	20, 11, 13, 19, 9, 12, 21, 11, 
+	13, 22, 9, 12, 13, 11, 13, 23, 
+	9, 12, 24, 11, 13, 23, 9, 12, 
+	25, 11, 13, 9, 12, 13, 26, 11, 
+	13, 9, 12, 27, 28, 11, 13, 9, 
+	12, 27, 11, 13, 9, 29, 1, 30, 
+	0, 1, 31, 0, 32, 1, 31, 0, 
+	34, 35, 33, 36, 37, 35, 37, 33, 
+	36, 37, 35, 38, 39, 40, 37, 33, 
+	36, 41, 35, 37, 42, 33, 36, 37, 
+	35, 37, 43, 33, 36, 20, 35, 37, 
+	43, 33, 36, 44, 35, 37, 45, 33, 
+	36, 37, 35, 37, 46, 33, 36, 47, 
+	35, 37, 46, 33, 36, 48, 35, 37, 
+	33, 36, 37, 49, 35, 37, 33, 36, 
+	50, 51, 35, 37, 33, 36, 52, 35, 
+	37, 53, 33, 36, 37, 35, 37, 54, 
+	33, 36, 55, 35, 37, 54, 33, 36, 
+	50, 35, 37, 33, 56, 1, 0, 57, 
+	1, 0, 58, 59, 1, 0, 60, 1, 
+	58, 0, 1, 61, 0, 62, 1, 61, 
+	0, 64, 65, 63, 66, 67, 65, 67, 
+	63, 66, 67, 65, 68, 69, 70, 67, 
+	63, 66, 71, 65, 67, 72, 63, 66, 
+	67, 65, 67, 73, 63, 66, 20, 65, 
+	67, 73, 63, 66, 74, 65, 67, 75, 
+	63, 66, 67, 65, 67, 76, 63, 66, 
+	47, 65, 67, 76, 63, 66, 77, 65, 
+	67, 63, 66, 67, 78, 65, 67, 63, 
+	66, 79, 80, 65, 67, 63, 66, 81, 
+	65, 67, 82, 63, 66, 67, 65, 67, 
+	83, 63, 66, 84, 65, 67, 83, 63, 
+	66, 79, 65, 67, 63, 58, 1, 0, 
+	12, 13, 11, 13, 9, 36, 37, 35, 
+	37, 33, 66, 67, 65, 67, 63, 0
 };
 
 static const char _mr_extractor_trans_targs[] = {
-	1, 2, 3, 4, 3, 5, 6, 7, 
-	12, 8, 12, 7, 9, 10, 9, 11, 
-	7
+	1, 2, 3, 19, 38, 4, 3, 5, 
+	6, 7, 61, 8, 61, 7, 9, 12, 
+	15, 10, 9, 11, 7, 13, 12, 14, 
+	7, 16, 17, 12, 18, 20, 19, 21, 
+	22, 23, 62, 24, 62, 23, 25, 28, 
+	31, 26, 25, 27, 29, 28, 30, 23, 
+	32, 33, 34, 37, 35, 34, 36, 23, 
+	39, 40, 41, 60, 42, 43, 44, 45, 
+	63, 46, 63, 45, 47, 50, 53, 48, 
+	47, 49, 51, 50, 52, 54, 55, 56, 
+	59, 57, 56, 58, 45
 };
 
 static const char _mr_extractor_trans_actions[] = {
-	0, 1, 3, 5, 0, 0, 7, 0, 
-	0, 1, 9, 9, 3, 11, 0, 0, 
-	14
+	0, 1, 3, 3, 3, 5, 0, 0, 
+	7, 0, 0, 1, 9, 9, 3, 3, 
+	3, 11, 0, 0, 14, 17, 0, 0, 
+	20, 9, 0, 9, 0, 5, 0, 0, 
+	7, 0, 0, 1, 9, 9, 3, 3, 
+	3, 11, 0, 0, 11, 0, 0, 14, 
+	9, 0, 9, 0, 17, 0, 0, 20, 
+	0, 0, 0, 0, 5, 0, 7, 0, 
+	0, 1, 9, 9, 3, 3, 3, 11, 
+	0, 0, 11, 0, 0, 9, 0, 9, 
+	0, 11, 0, 0, 14
 };
 
 static const int mr_extractor_start = 0;
@@ -71,7 +181,7 @@ static const int mr_extractor_start = 0;
 static const int mr_extractor_en_main = 0;
 
 
-#line 107 "src/spss/readstat_sav_parse_mr_name.rl"
+#line 122 "src/spss/readstat_sav_parse_mr_name.rl"
 
 
 readstat_error_t extract_mr_data(const char *line, mr_set_t *result) {
@@ -93,14 +203,14 @@ readstat_error_t extract_mr_data(const char *line, mr_set_t *result) {
 
     // Execute Ragel finite state machine (FSM)
     
-#line 97 "src/spss/readstat_sav_parse_mr_name.c"
+#line 207 "src/spss/readstat_sav_parse_mr_name.c"
 	{
 	cs = mr_extractor_start;
 	}
 
-#line 128 "src/spss/readstat_sav_parse_mr_name.rl"
+#line 143 "src/spss/readstat_sav_parse_mr_name.rl"
     
-#line 104 "src/spss/readstat_sav_parse_mr_name.c"
+#line 214 "src/spss/readstat_sav_parse_mr_name.c"
 	{
 	int _klen;
 	unsigned int _trans;
@@ -267,7 +377,7 @@ _match:
         mr_subvariables[mr_subvar_count++] = subvar;
     }
 	break;
-#line 271 "src/spss/readstat_sav_parse_mr_name.c"
+#line 381 "src/spss/readstat_sav_parse_mr_name.c"
 		}
 	}
 
@@ -277,10 +387,10 @@ _again:
 	_test_eof: {}
 	}
 
-#line 129 "src/spss/readstat_sav_parse_mr_name.rl"
+#line 144 "src/spss/readstat_sav_parse_mr_name.rl"
 
     // Check if FSM finished successfully
-    if (cs < 12 || p != pe) {
+    if (cs < 61 || p != pe) {
         retval = READSTAT_ERROR_BAD_MR_STRING;
         goto cleanup;
     }
@@ -294,7 +404,7 @@ _again:
     result->counted_value = mr_counted_value;
     result->subvariables = mr_subvariables;
     result->num_subvars = mr_subvar_count;
-    if (result->type == 'D') {
+    if (result->type == 'D' || result->type == 'E') {
         result->is_dichotomy = 1;
     }
 
@@ -319,7 +429,7 @@ readstat_error_t parse_mr_line(const char *line, mr_set_t *result) {
 }
 
 
-#line 323 "src/spss/readstat_sav_parse_mr_name.c"
+#line 433 "src/spss/readstat_sav_parse_mr_name.c"
 static const char _mr_parser_actions[] = {
 	0, 1, 0
 };
@@ -362,7 +472,7 @@ static const int mr_parser_start = 1;
 static const int mr_parser_en_main = 1;
 
 
-#line 202 "src/spss/readstat_sav_parse_mr_name.rl"
+#line 217 "src/spss/readstat_sav_parse_mr_name.rl"
 
 
 readstat_error_t parse_mr_string(const char *line, mr_set_t **mr_sets, size_t *n_mr_lines) {
@@ -375,14 +485,14 @@ readstat_error_t parse_mr_string(const char *line, mr_set_t **mr_sets, size_t *n
     *n_mr_lines = 0;
 
     
-#line 379 "src/spss/readstat_sav_parse_mr_name.c"
+#line 489 "src/spss/readstat_sav_parse_mr_name.c"
 	{
 	cs = mr_parser_start;
 	}
 
-#line 214 "src/spss/readstat_sav_parse_mr_name.rl"
+#line 229 "src/spss/readstat_sav_parse_mr_name.rl"
     
-#line 386 "src/spss/readstat_sav_parse_mr_name.c"
+#line 496 "src/spss/readstat_sav_parse_mr_name.c"
 	{
 	int _klen;
 	unsigned int _trans;
@@ -457,7 +567,7 @@ _match:
 		switch ( *_acts++ )
 		{
 	case 0:
-#line 172 "src/spss/readstat_sav_parse_mr_name.rl"
+#line 187 "src/spss/readstat_sav_parse_mr_name.rl"
 	{
         char *mln = (char *)readstat_malloc(p - start);
         if (mln == NULL) {
@@ -482,7 +592,7 @@ _match:
         start = p + 1;
     }
 	break;
-#line 486 "src/spss/readstat_sav_parse_mr_name.c"
+#line 596 "src/spss/readstat_sav_parse_mr_name.c"
 		}
 	}
 
@@ -495,7 +605,7 @@ _again:
 	_out: {}
 	}
 
-#line 215 "src/spss/readstat_sav_parse_mr_name.rl"
+#line 230 "src/spss/readstat_sav_parse_mr_name.rl"
 
     if (cs < 4 || p != pe) {
         retval = READSTAT_ERROR_BAD_MR_STRING;

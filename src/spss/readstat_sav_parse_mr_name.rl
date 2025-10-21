@@ -106,14 +106,17 @@
     counted_value = digit* ' ' > extract_counted_value;
     label = digit+ ' '+ > extract_label;
 
-    subvar_space = (nc+ space >extract_subvar);
-    subvar_end = (nc+ '\0' >extract_subvar);
-    subvariables = subvar_space* (subvar_end | '\0');
+    end = (space | '\0'); # subvar token terminator
+    subvariable = (nc+ end >extract_subvar);
+
+    # subvar_space = (nc+ space >extract_subvar);
+    # subvar_end = (nc+ '\0' >extract_subvar);
+    # subvariables = subvar_space* (subvar_end | '\0');
 
     # Define patterns for each type
-    c_pattern = c_type counted_value label subvariables;
-    d_pattern = d_type counted_value label subvariables;
-    e_pattern = e_type e_params counted_value label subvariables;
+    c_pattern = c_type counted_value label subvariable* end*;
+    d_pattern = d_type counted_value label subvariable* end*;
+    e_pattern = e_type e_params counted_value label subvariable* end*;
 
     # Main pattern is one of the type patterns
     main := name (c_pattern | d_pattern | e_pattern);

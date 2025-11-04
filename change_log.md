@@ -1,5 +1,7 @@
 # 1.3.2 (github, pypi and conda 2025.xx.xx)
 * correction to writing objects, solves #306
+* Pipeline to produce wheels migrated to cibuildwheel
+* setup.py updated to support Python 3.14 on ubuntu
 
 # 1.3.1 (github, pypi and conda 2025.08.14)
 * make list of notes writable, solves #292

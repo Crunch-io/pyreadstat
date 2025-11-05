@@ -1293,6 +1293,35 @@ class TestBasic(unittest.TestCase):
             df_control['c'] = df_control['c'].astype(object).astype("category")
         self.assertTrue(df2.equals(df_control))
 
+    def test_sav_write_mixed_types(self):
+        csv_path = os.path.join(self.basic_data_folder, "mixed_types.csv")
+        kwds = {}
+        if backend == "polars":
+            kwds["try_parse_dates"] = True
+        df_ori = nw.read_csv(csv_path, backend=self.backend, **kwds)
+        df = df_ori.clone()
+        if self.backend != "pandas":
+            # convince polars to take columns with mixed types
+            temp = [0 if x=="0" else x for x in df["col_other"]]
+            newser = nw.new_series(name="col_other", values=temp , dtype=nw.Object, backend=df.implementation) 
+            df = df.with_columns(newser.alias("col_other"))
+            temp = [datetime.strptime('2814-01-01 00:00:00', '%Y-%m-%d %H:%M:%S') if x.startswith('2814') else x for x in df["total_time"]]
+            newser = nw.new_series(name="total_time", values=temp, dtype=nw.Object, backend=df.implementation) 
+            df = df.with_columns(newser.alias("total_time"))
+        else:
+            df = df.with_columns(nw.when(nw.col("col_other")=='0').then(nw.lit(0)).otherwise(nw.col('col_other')).alias('col_other'))
+            df = df.with_columns(nw.when(nw.col("total_time")=='2814-01-01 00:00:00')
+                                   .then(nw.lit(datetime.strptime('2814-01-01 00:00:00', '%Y-%m-%d %H:%M:%S')))
+                                   .otherwise(nw.col('total_time'))
+                                   .alias('total_time'))
+            df = df.with_columns(nw.col("datestamp").cast(nw.Datetime(time_unit="ns")))
+            df_ori = df_ori.with_columns(nw.col("datestamp").cast(nw.Datetime(time_unit="ns")))
+        df = df.to_native()
+        path = os.path.join(self.write_folder, "mixed_types.sav")
+        pyreadstat.write_sav(df, path)
+        df2, meta = pyreadstat.read_sav(path,  output_format=self.backend)
+        self.assertTrue(df_ori.to_native().equals(df2))
+
 
 if __name__ == '__main__':
 

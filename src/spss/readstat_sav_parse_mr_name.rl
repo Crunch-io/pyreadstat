@@ -92,7 +92,7 @@
         mr_subvariables[mr_subvar_count++] = subvar;
     }
 
-    nc = (alnum | '_' | '.' ); # name character (including dots)
+    nc = (extend | '_' | '.' ); # name character (including dots)
     name = nc+ '=' > extract_mr_name;
 
     # Define types
